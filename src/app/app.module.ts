@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { MainEntryComponent } from './main-entry/main-entry.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MainEntryComponent } from './main-entry/main-entry.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
