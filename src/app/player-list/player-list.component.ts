@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,17 +6,27 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './player-list.component.html',
   styleUrls: ['./player-list.component.scss'],
 })
+
 export class PlayerListComponent {
-  constructor(private http: HttpClient) {}
+  firstName: string = "";
+  playerListArray: Array<string> = [];
+
+  constructor(private http: HttpClient) {};
 
   public addPlayer() {
-    this.http.post('/players', { name: 'David', gender: 'Male' }).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
-  }
+    if(this.firstName !== "") {
+      this.playerListArray.push(this.firstName);
+    };
+    this.firstName = "";
+
+  };
+
+   public removePlayer() {
+    this.playerListArray.pop();
+  };
 
   public startGame() {
     console.log('this should technically start the game');
-  }
+    this.addPlayer();
+  };
 }

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { MainEntryComponent } from './main-entry/main-entry.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

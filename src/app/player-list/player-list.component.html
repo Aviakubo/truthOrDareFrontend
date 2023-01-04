@@ -1,8 +1,21 @@
 <div>
   <h1>Add Players</h1>
-  <div class="add player">
-    <div class="buttonContainer">
-      <button (click)="startGame()">Start Game</button>
-    </div>
+  <div class="buttonContainer">
+    <button type="button" (click)="addPlayer()">Add Player</button>
+    <button (click)="removePlayer()">Remove Player</button>
+    <button (click)="startGame()">Start Game</button>
+  </div>
+  <div class="player">
+    <label for="playerName">Enter Name: </label>
+    <input
+      maxlength="10"
+      type="text"
+      id="firstName"
+      name="firstName"
+      [(ngModel)]="firstName"
+    />
+  </div>
+  <div class="addedPlayers" *ngFor="let name of playerListArray">
+    <li>{{ name }}</li>
   </div>
 </div>
