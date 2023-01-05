@@ -9,13 +9,15 @@ import { Component } from '@angular/core';
 export class GameplayComponent {
   truthData: any;
   dareData: any;
-  numberOfTruthsOrDares: number = 3;
-  rangeArray = this.rangeOfQuestions();
+  numberOfTruthsOrDares: number = 4;
+  truthArray: Array<number> = this.rangeOfTruths();
+  dareArray: Array<number> = this.rangeOfDares();
 
   ngOnInit() {
     this.getTruth();
     this.getDare();
-    this.rangeOfQuestions();
+    this.rangeOfTruths();
+    this.rangeOfDares();
   }
 
   constructor(private http: HttpClient) {}
@@ -33,40 +35,57 @@ export class GameplayComponent {
   }
 
   showTruth() {
-    let randomTruth = this.pickRandomUniqueQuestion();
-    if (this.rangeArray.length > 0) {
-      console.log(this.dareData[randomTruth].instructions);
+    if (this.truthArray.length > 0) {
+      let randomTruthNumber = this.pickRandomUniqueTruth();
+      console.log(this.dareData[randomTruthNumber].instructions);
+      const index = this.truthArray.indexOf(randomTruthNumber);
+      this.truthArray.splice(index, 1);
     } else {
       this.gameOver();
-    };
-  };
-
-  showDare() {
-    let randomDare = this.pickRandomUniqueQuestion();
-    if (this.rangeArray.length > 0) {
-      // this should probably update state or something
-      console.log(this.dareData[randomDare].instructions);
-    } else {
-      this.gameOver();
-    };
-  };
-
-  private rangeOfQuestions() {
-    let rangeArray: Array<number> = [];
-
-    for (let i = 0; i <= this.numberOfTruthsOrDares; i++) {
-      rangeArray.push(i);
     }
-    return rangeArray;
   }
 
-  public pickRandomUniqueQuestion(): number {
-    const randomNumber =
-      this.rangeArray[Math.floor(Math.random() * this.rangeArray.length)];
-    const index = this.rangeArray.indexOf(randomNumber);
-    const x = this.rangeArray.splice(index, 1);
-    const errorMessage: string = 'the game has had an oopsie';
-      return randomNumber;
+  showDare() {
+    if (this.dareArray.length > 0) {
+      let randomDareNumber = this.pickRandomUniqueDare();
+      console.log(this.dareData[randomDareNumber].instructions);
+      const index = this.dareArray.indexOf(randomDareNumber);
+      this.dareArray.splice(index, 1);
+    } else {
+      this.gameOver();
+    }
+  }
+
+  private rangeOfTruths(): Array<number> {
+    let truthArray: Array<number> = [];
+
+    for (let i = 0; i < this.numberOfTruthsOrDares; i++) {
+      truthArray.push(i);
+    }
+    return truthArray;
+  }
+
+  private rangeOfDares(): Array<number> {
+    let dareArray: Array<number> = [];
+
+    for (let i = 0; i < this.numberOfTruthsOrDares; i++) {
+      dareArray.push(i);
+    }
+    return dareArray;
+  }
+
+  public pickRandomUniqueDare(): number {
+    const randomDareNumber =
+      this.dareArray[Math.floor(Math.random() * this.dareArray.length)];
+
+    return randomDareNumber;
+  }
+
+  public pickRandomUniqueTruth(): number {
+    const randomTruthNumber =
+      this.truthArray[Math.floor(Math.random() * this.truthArray.length)];
+
+    return randomTruthNumber;
   }
 
   gameOver() {
