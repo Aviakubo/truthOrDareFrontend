@@ -9,21 +9,60 @@ import { Component } from '@angular/core';
 export class GameplayComponent {
   truthData: any;
   dareData: any;
-  randomInteger = Math.floor(Math.random() * 2);
+  numberOfTruthsOrDares: number = 4;
+  rangeArray = this.rangeOfQuestions();
+
+  ngOnInit() {
+    this.getTruth();
+    this.getDare();
+    this.rangeOfQuestions();
+  }
 
   constructor(private http: HttpClient) {};
 
   getTruth() {
     this.http.get('http://localhost:4000/truth/').subscribe((response) => {
       this.truthData = response;
-      console.log(this.truthData[this.randomInteger].instructions);
     })
   };
 
   getDare() {
     this.http.get('http://localhost:4000/dare').subscribe((response) => {
       this.dareData = response;
-      console.log(this.dareData[this.randomInteger].instructions);
-    })
+    });
+  };
+
+  showTruth() {
+    console.log(this.truthData);
+  };
+
+  showDare() {
+    console.log(this.dareData);
+  };
+
+
+  private rangeOfQuestions() {
+    let rangeArray: Array<number> = [];
+
+    for (let i = 1; i <= this.numberOfTruthsOrDares; i++) {
+      rangeArray.push(i);
+    };
+    return rangeArray;
+  };
+
+  public pickRandomUniqueQuestion() {
+    const randomNumber = this.rangeArray[Math.floor(Math.random() * this.rangeArray.length)];
+    const index = this.rangeArray.indexOf(randomNumber);
+    const x = this.rangeArray.splice(index, 1);
+    const errorMessage: string = "the game has had an oopsie"
+    if(this.rangeArray.length > 0) {
+    return randomNumber } else {
+      this.gameOver();
+      return console.log(errorMessage);
+    }
+  };
+
+  gameOver() {
+    console.log('this is the technical game end')
   };
 };
