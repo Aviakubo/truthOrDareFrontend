@@ -140,6 +140,7 @@ export class GameplayComponent {
       this.startingIndex = this.startingIndex + 1;
     } else if (this.startingIndex !== playersArray.length - 1) {
       this.state.currentPlayer = playersArray[this.startingIndex];
+      this.startingIndex = this.startingIndex + 1;
     } else if (this.startingIndex === playersArray.length - 1) {
       this.state.currentPlayer = playersArray[this.startingIndex];
       this.startingIndex = 0;
