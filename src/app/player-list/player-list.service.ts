@@ -12,12 +12,12 @@ export class PlayerListService {
 
   get state(): PlayerListState {
     return this.state$.value
-  }
+  };
   
   get stateChanged(): Observable<PlayerListState> {
     return this.state$.asObservable();
-  }
-  constructor() { }
+  };
+  constructor() { };
 
   public updateState(value: PlayerListState) {
     this.state$.next(value);
