@@ -8,6 +8,7 @@ import { GameplayFactory } from "./gameplay.factory";
     providedIn: 'root'
 })
 export class GameplayService {
+    dareData: any;
 
     private state$: BehaviorSubject<GameplayState> = new BehaviorSubject<GameplayState>(GameplayFactory.buildState());
 
@@ -19,18 +20,10 @@ export class GameplayService {
         return this.state$.asObservable();
     };
 
-    constructor(private http: HttpClient) {};
+    constructor() {};
 
     public updateState(value: GameplayState) {
         this.state$.next(value);
-    };
-
-    getDaresFromApi() {
-        this.http
-    };
-
-    getTruthsFromApi() {
-
     };
 
 }

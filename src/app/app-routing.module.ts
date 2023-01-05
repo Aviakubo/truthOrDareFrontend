@@ -5,7 +5,7 @@ import { MainEntryComponent } from './main-entry/main-entry.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 
 const routes: Routes = [
-  { path: 'home', component: MainEntryComponent },
+  { path: '', component: MainEntryComponent },
   { path: 'players', component: PlayerListComponent },
   { path: 'game', component: GameplayComponent }
 ];

@@ -6,6 +6,7 @@ export interface Gameplay {
 
 export interface GameplayState {
     players: PlayerListState,
+    currentPlayer: string,
     dare: boolean,
     currentInstructions: string
 };

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { PlayerListService } from './player-list.service';
 import { Subscription } from 'rxjs';
 import { PlayerListState } from './definitions/player-list.interface';
+import { GameplayService } from '../gameplay/gameplay.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-list',
@@ -26,7 +27,7 @@ export class PlayerListComponent {
 
   @Output() stateChanged: EventEmitter<PlayerListState> = new EventEmitter<PlayerListState>();
 
-  constructor(private http: HttpClient, private service: PlayerListService) {};
+  constructor(private service: PlayerListService, private gameService: GameplayService, private router: Router) {};
 
   async ngOnInit(): Promise<void> {
     this.initSubscriptions();
@@ -61,5 +62,7 @@ export class PlayerListComponent {
 
   public startGame() {
     console.log('this should technically start the game');
+    this.gameService.state.players = this.service.state;
+    this.router.navigateByUrl('/game');
   };
 }
