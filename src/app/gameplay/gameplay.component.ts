@@ -14,7 +14,8 @@ export class GameplayComponent {
   startingIndex: number = 0;
   truthData: any;
   dareData: any;
-  numberOfTruthsOrDares: number = 4;
+  numberOfTruths: number = 4;
+  numberOfDares: number = 4;
   truthArray: Array<number> = this.rangeOfTruths();
   dareArray: Array<number> = this.rangeOfDares();
   private subscriptions: Subscription = new Subscription();
@@ -99,7 +100,7 @@ export class GameplayComponent {
   private rangeOfTruths(): Array<number> {
     let truthArray: Array<number> = [];
 
-    for (let i = 0; i < this.numberOfTruthsOrDares; i++) {
+    for (let i = 0; i < this.numberOfTruths; i++) {
       truthArray.push(i);
     }
     return truthArray;
@@ -108,7 +109,7 @@ export class GameplayComponent {
   private rangeOfDares(): Array<number> {
     let dareArray: Array<number> = [];
 
-    for (let i = 0; i < this.numberOfTruthsOrDares; i++) {
+    for (let i = 0; i < this.numberOfDares; i++) {
       dareArray.push(i);
     }
     return dareArray;
