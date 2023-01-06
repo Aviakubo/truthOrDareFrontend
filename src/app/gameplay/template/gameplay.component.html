@@ -1,4 +1,9 @@
-<button type="button" (click)="showTruth()">truth</button>
-<button type="button" (click)="showDare()">dare</button>
-<p>{{ state.currentPlayer }}</p>
-<p>{{ state.currentInstructions }}</p>
+<div class="gameplay">
+  <h1>Truth or Dare</h1>
+  <div class="gameplay--buttons">
+    <button type="button" (click)="showTruth()">truth</button>
+    <button type="button" (click)="showDare()">dare</button>
+  </div>
+  <p>{{ state.currentPlayer }}</p>
+  <p>{{ state.currentInstructions }}</p>
+</div>
