@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GameplayState } from './definitions/gameplay.interface';
 import { GameplayService } from './gameplay.service';
@@ -29,7 +30,7 @@ export class GameplayComponent {
   @Output() stateChanged: EventEmitter<GameplayState> =
     new EventEmitter<GameplayState>();
 
-  constructor(private service: GameplayService, private http: HttpClient) {}
+  constructor(private service: GameplayService, private http: HttpClient, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     this.gameSetup();
@@ -73,7 +74,6 @@ export class GameplayComponent {
     this.selectActivePlayer();
     if (this.truthArray.length > 0) {
       let randomTruthNumber = this.pickRandomUniqueTruth();
-      console.log(this.dareData[randomTruthNumber].instructions);
       this.service.state.currentInstructions =
         this.truthData[randomTruthNumber].instructions;
       const index = this.truthArray.indexOf(randomTruthNumber);
@@ -87,7 +87,6 @@ export class GameplayComponent {
     this.selectActivePlayer();
     if (this.dareArray.length > 0) {
       let randomDareNumber = this.pickRandomUniqueDare();
-      console.log(this.dareData[randomDareNumber].instructions);
       this.service.state.currentInstructions =
         this.dareData[randomDareNumber].instructions;
       const index = this.dareArray.indexOf(randomDareNumber);
@@ -131,6 +130,25 @@ export class GameplayComponent {
 
   private gameOver() {
     console.log('this is the technical game end');
+    if (this.truthArray.length === 0 && this.dareArray.length === 0) {
+      alert('game is over!');
+      this.router.navigateByUrl('');
+    } else if (this.truthArray.length === 0) {
+      this.noTruthsLeft();
+    } else if (this.dareArray.length === 0) {
+      this.noDaresLeft();
+    } else {
+      alert('i have not accountd for this error. game will restart now');
+      this.router.navigateByUrl('');
+    }
+  }
+
+  private noTruthsLeft() {
+    alert('there are no more truths left. please select a dare :)');
+  }
+
+  private noDaresLeft() {
+    alert('there are no more dares left. please select a truth :)');
   }
 
   public selectActivePlayer() {
