@@ -1,10 +1,5 @@
 <div class="playerList">
   <h1>Add Players</h1>
-  <div class="buttonContainer">
-    <button type="button" (click)="addPlayer()">Add Player</button>
-    <button type="button" (click)="removePlayer()">Remove Player</button>
-    <button type="button" (click)="startGame()">Start Game</button>
-  </div>
   <div class="player">
     <label for="playerName">Enter Name: </label>
     <input
@@ -14,6 +9,11 @@
       name="firstName"
       [(ngModel)]="firstName"
     />
+  </div>
+  <div class="buttonContainer">
+    <button class ="button" type="button" (click)="addPlayer()">Add Player</button>
+    <button class ="button" type="button" (click)="removePlayer()">Remove Player</button>
+    <button class ="button" type="button" (click)="startGame()">Start Game</button>
   </div>
   <div class="addedPlayers" *ngFor="let name of playerListArray.firstNames">
     <li>{{ name }}</li>

@@ -52,7 +52,7 @@ export class GameplayComponent {
     this.destroySubscriptions();
   }
 
-  gameSetup() {
+  private gameSetup() {
     this.getDare();
     this.getTruth();
     this.rangeOfTruths();
@@ -130,7 +130,6 @@ export class GameplayComponent {
   }
 
   private gameOver() {
-    console.log('this is the technical game end');
     if (this.truthArray.length === 0 && this.dareArray.length === 0) {
       alert('game is over!');
       this.router.navigateByUrl('');

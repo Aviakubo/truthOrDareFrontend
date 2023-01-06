@@ -61,8 +61,11 @@ export class PlayerListComponent {
   };
 
   public startGame() {
-    console.log('this should technically start the game');
-    this.gameService.state.players = this.service.state;
-    this.router.navigateByUrl('/game');
+    if(this.playerListArray.firstNames.length < 2) {
+      alert("please add more than one player");
+    } else {
+      this.gameService.state.players = this.service.state;
+      this.router.navigateByUrl('/game');
+    }
   };
 }
