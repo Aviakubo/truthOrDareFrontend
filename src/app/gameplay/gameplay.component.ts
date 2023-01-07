@@ -60,13 +60,13 @@ export class GameplayComponent {
   }
 
   private getTruth() {
-    this.http.get('http://localhost:4000/truth/').subscribe((response) => {
+    this.http.get('https://truth-or-dare-backend-hse8jrp4j-aviakubo.vercel.app/truth/').subscribe((response) => {
       this.truthData = response;
     });
   }
 
   private getDare() {
-    this.http.get('http://localhost:4000/dare').subscribe((response) => {
+    this.http.get('https://truth-or-dare-backend-hse8jrp4j-aviakubo.vercel.app/dare').subscribe((response) => {
       this.dareData = response;
     });
   }
