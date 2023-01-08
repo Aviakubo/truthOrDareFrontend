@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Gameplay } from 'src/app/gameplay/definitions/gameplay.interface';
 import { GameplayService } from 'src/app/gameplay/gameplay.service';
+import { PlayerListState } from '../definitions/player-list.interface';
 
 import { PlayerListComponent } from '../player-list.component';
 
@@ -28,4 +29,12 @@ describe('PlayerListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set state', () => {
+    const state = spyOnProperty(component, 'state', 'set').and.callThrough();
+    const update = {} as unknown as PlayerListState;
+    component.state = update;
+    expect(state).toHaveBeenCalledWith(update);
+  });
+
 });
