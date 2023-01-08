@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { GameComponent } from './game/game.component';
 import { GameplayComponent } from './gameplay/gameplay.component';
+import { PlayAgainComponent } from './play-again/play-again.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { GameplayComponent } from './gameplay/gameplay.component';
     PlayerListComponent,
     MainEntryComponent,
     GameComponent,
-    GameplayComponent
+    GameplayComponent,
+    PlayAgainComponent
   ],
   imports: [
     BrowserModule,

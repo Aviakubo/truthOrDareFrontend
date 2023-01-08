@@ -15,7 +15,7 @@ export class GameplayComponent {
   truthData: any;
   dareData: any;
   numberOfTruths: number = 4;
-  numberOfDares: number = 4;
+  numberOfDares: number = 5;
   truthArray: Array<number> = this.rangeOfTruths();
   dareArray: Array<number> = this.rangeOfDares();
   private subscriptions: Subscription = new Subscription();
@@ -131,8 +131,8 @@ export class GameplayComponent {
 
   private gameOver() {
     if (this.truthArray.length === 0 && this.dareArray.length === 0) {
-      alert('game is over!');
-      this.router.navigateByUrl('');
+      alert('game is over');
+      this.router.navigateByUrl('/playagain');
     } else if (this.truthArray.length === 0) {
       this.noTruthsLeft();
     } else if (this.dareArray.length === 0) {
@@ -151,7 +151,7 @@ export class GameplayComponent {
     alert('there are no more dares left. please select a truth :)');
   }
 
-  public selectActivePlayer() {
+  private selectActivePlayer() {
     let playersArray = this.state.players.firstNames;
     if (this.startingIndex === 0) {
       this.state.currentPlayer = playersArray[this.startingIndex];

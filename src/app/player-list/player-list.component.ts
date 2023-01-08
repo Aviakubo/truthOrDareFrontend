@@ -62,7 +62,7 @@ export class PlayerListComponent {
 
   public startGame() {
     if(this.playerListArray.firstNames.length < 2) {
-      alert("please add more than one player");
+      alert("please add at least 2 players");
     } else {
       this.gameService.state.players = this.service.state;
       this.router.navigateByUrl('/game');

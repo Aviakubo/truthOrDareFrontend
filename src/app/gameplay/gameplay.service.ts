@@ -8,7 +8,6 @@ import { GameplayFactory } from "./gameplay.factory";
     providedIn: 'root'
 })
 export class GameplayService {
-    dareData: any;
 
     private state$: BehaviorSubject<GameplayState> = new BehaviorSubject<GameplayState>(GameplayFactory.buildState());
 
