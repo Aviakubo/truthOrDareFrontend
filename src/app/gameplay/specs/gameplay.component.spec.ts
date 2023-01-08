@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { GameplayState } from '../definitions/gameplay.interface';
 
 import { GameplayComponent } from '../gameplay.component';
 
@@ -25,4 +26,12 @@ describe('GameplayComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set state', () => {
+    const state = spyOnProperty(component, 'state', 'set').and.callThrough();
+    const update = {} as unknown as GameplayState;
+    component.state = update;
+    expect(state).toHaveBeenCalledWith(update);
+  });
+
 });
