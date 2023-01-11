@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlayAgainComponent } from './play-again.component';
+import { PackSelectionComponent } from './pack-selection.component';
 
-describe('PlayAgainComponent', () => {
-  let component: PlayAgainComponent;
-  let fixture: ComponentFixture<PlayAgainComponent>;
+describe('PackSelectionComponent', () => {
+  let component: PackSelectionComponent;
+  let fixture: ComponentFixture<PackSelectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayAgainComponent ]
+      declarations: [ PackSelectionComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PlayAgainComponent);
+    fixture = TestBed.createComponent(PackSelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -72,7 +72,6 @@ export class GameplayComponent {
   }
 
   public showTruth() {
-    this.selectActivePlayer();
     if (this.truthArray.length > 0) {
       let randomTruthNumber = this.pickRandomUniqueTruth();
       this.service.state.currentInstructions =
@@ -85,7 +84,6 @@ export class GameplayComponent {
   }
 
   public showDare() {
-    this.selectActivePlayer();
     if (this.dareArray.length > 0) {
       let randomDareNumber = this.pickRandomUniqueDare();
       this.service.state.currentInstructions =
@@ -151,17 +149,4 @@ export class GameplayComponent {
     alert('there are no more dares left. please select a truth :)');
   }
 
-  private selectActivePlayer() {
-    let playersArray = this.state.players.firstNames;
-    if (this.startingIndex === 0) {
-      this.state.currentPlayer = playersArray[this.startingIndex];
-      this.startingIndex = this.startingIndex + 1;
-    } else if (this.startingIndex !== playersArray.length - 1) {
-      this.state.currentPlayer = playersArray[this.startingIndex];
-      this.startingIndex = this.startingIndex + 1;
-    } else if (this.startingIndex === playersArray.length - 1) {
-      this.state.currentPlayer = playersArray[this.startingIndex];
-      this.startingIndex = 0;
-    }
-  }
 }

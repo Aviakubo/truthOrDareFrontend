@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class MainEntryComponent {
   constructor(private router: Router) {}
 
-  addPlayers() {
-    this.router.navigateByUrl('/players');
+  startGame() {
+    this.router.navigateByUrl('/game');
   }
 }
