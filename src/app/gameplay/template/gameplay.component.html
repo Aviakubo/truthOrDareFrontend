@@ -1,9 +1,11 @@
-<div class="gameplay">
-  <h1>Truth or Dare</h1>
-  <div class="gameplay--buttons">
-    <button class="button" type="button" (click)="showTruth()">truth</button>
-    <button class="button" type="button" (click)="showDare()">dare</button>
+<div class="background">
+  <div class="gameplay">
+    <h1>Truth or Dare</h1>
+    <p class="playerName">{{ state.currentPlayer }}</p>
+    <p class="instructions">{{ state.currentInstructions }}</p>
+    <div class="gameplay--buttons">
+      <button class="button" type="button" (click)="showTruth()">truth</button>
+      <button class="button" type="button" (click)="showDare()">dare</button>
+    </div>
   </div>
-  <p class="playerName">{{ state.currentPlayer }}</p>
-  <p class="instructions">{{ state.currentInstructions }}</p>
 </div>
