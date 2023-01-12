@@ -1,8 +1,19 @@
 <div class="mainEntry">
   <div class="mainEntry--header">
-    <h1>Welcome to Truth or Dare</h1>
+    <h1 class="h1Header">Truth</h1>
+    <p id="pHeader">or</p>
+    <h1 class="h1Header">Dare</h1>
+    <p class="instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio aspernatur repellat unde quasi explicabo odio temporibus, beatae consequatur vitae dolore veniam optio laborum eum, corporis quaerat ex cum nam nemo.</p>
   </div>
   <div class="mainEntry--intro">
-    <button type="button" (click)="startGame()">Let's Begin</button>
+    <div class="introContainer">
+    <p class="introHeader">Select a Category</p>
+    <img src="../../assets/alertCircle.svg">
+  </div>
+    <button (click)="startGame()"type="button">Classic</button>
+    <button (click)="startGame()"type="button">Teens</button>
+    <button (click)="startGame()"type="button">Adult</button>
+    <button (click)="startGame()"type="button">Party</button>
+    <button (click)="startGame()"type="button">Mixed</button>
   </div>
 </div>

@@ -1,16 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-@use './styles/fonts.scss';
-@use './styles/breakpoints.scss';
-
-button {
-    border-radius: 24px;
-    padding: 12px 28px;
-}
+@use "./styles/fonts.scss";
+@use "./styles/breakpoints.scss";
 
 div {
-    font-family: fonts.$primary_font;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-family: fonts.$primary_font;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background: linear-gradient(192.1deg, #3ab6dd 39.12%, #004382 102.59%);
+  background-blend-mode: multiply;
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 # TruthOrDareFrontEnd
 
 ## Future Plans
-### Last updated 01/09/2023
+### Last updated 01/12/2023
 - Need to add capabilities for different "packs" or categories of truths & dares
 - Would like to add authentication so that users can have their own unique sets of packs
 - Might end up removing the player list component so that players can decide their own rules
