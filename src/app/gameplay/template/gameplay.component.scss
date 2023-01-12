@@ -1,21 +1,7 @@
-.background {
-    min-height: 100vh;
-}
-
-.gameplay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 85vh;
-}
-
 .gameplay--buttons {
     width: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: row;
-    align-items: center;
     position: fixed;
     bottom: 0;
 }
@@ -23,10 +9,6 @@
 .button {
     width: 85%;
     margin: 35px;
-    padding: 12px 28px;
-    border-radius: 12px;
-    font-size: 16px;
-    transition-duration: 0.4s;
 }
 
 #truth {
