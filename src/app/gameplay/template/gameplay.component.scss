@@ -1,3 +1,6 @@
+@use "../../../styles/fonts.scss";
+@use "../../../styles/breakpoints.scss";
+
 .gameplay {
   background: linear-gradient(192.1deg, #027100 39.12%, #03433f 102.59%);
   background-blend-mode: multiply;
@@ -21,6 +24,16 @@
   width: 100%;
   max-width: 326px;
   justify-content: space-around;
+}
+
+.instructions {
+  font-family: fonts.$primary_font;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 125%;
+  color: #ffffff;
+  max-width: 326px;
+  text-align: center;
 }
 
 .gameplay--buttons {
