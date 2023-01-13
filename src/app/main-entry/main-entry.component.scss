@@ -41,11 +41,13 @@
   letter-spacing: 0em;
   text-align: left;
   color: white;
+  max-width: 326px;
 }
 .introContainer {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    max-width: 326px;
 }
 
 .introHeader {
