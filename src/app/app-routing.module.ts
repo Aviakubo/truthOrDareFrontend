@@ -5,6 +5,7 @@ import { MainEntryComponent } from './main-entry/main-entry.component';
 
 const routes: Routes = [
   { path: '', component: MainEntryComponent },
+  { path: 'main', component: MainEntryComponent },
   { path: 'game', component: GameplayComponent },
 ];
 

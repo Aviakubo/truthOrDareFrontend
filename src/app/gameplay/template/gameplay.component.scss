@@ -1,7 +1,17 @@
 .gameplay {
-    width: 100%;
+  background: linear-gradient(192.1deg, #027100 39.12%, #03433f 102.59%);
+  background-blend-mode: multiply;
+  height: 100%;
 }
 
-.gameplay--buttons {
+.imgContainer {
+    flex-direction: row;
     width: 100%;
+    max-width: 326px;
+    justify-content: space-around;
+}
+
+
+.gameplay--buttons {
+  width: 100%;
 }

@@ -11,9 +11,10 @@ div {
 }
 
 body {
-  background: linear-gradient(192.1deg, #3ab6dd 39.12%, #004382 102.59%);
-  background-blend-mode: multiply;
-  height: 100%;
+    background: linear-gradient(192.1deg, #3AB6DD 39.12%, #004382 102.59%);
+    background-blend-mode: multiply;
+    height: 100vh;
+    margin: 0px;
 }
 
 button {

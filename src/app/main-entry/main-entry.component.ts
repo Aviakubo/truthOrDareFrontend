@@ -10,6 +10,6 @@ export class MainEntryComponent {
   constructor(private router: Router) {}
 
   startGame() {
-    this.router.navigateByUrl('/game');
+    this.router.navigate(['/game']);
   }
 }

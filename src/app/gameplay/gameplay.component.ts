@@ -130,14 +130,14 @@ export class GameplayComponent {
   private gameOver() {
     if (this.truthArray.length === 0 && this.dareArray.length === 0) {
       alert('game is over');
-      this.router.navigateByUrl('/playagain');
+      this.router.navigate(['/playagain']);
     } else if (this.truthArray.length === 0) {
       this.noTruthsLeft();
     } else if (this.dareArray.length === 0) {
       this.noDaresLeft();
     } else {
       alert('i have not accountd for this error. game will restart now');
-      this.router.navigateByUrl('');
+      this.router.navigate(['']);
     }
   }
 
