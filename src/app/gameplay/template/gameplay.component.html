@@ -1,6 +1,14 @@
-<div class="gameplay">
+<div
+  class="gameplay"
+  [ngClass]="{
+    gameplay: state.dare === null,
+    dare: state.dare === true,
+    truth: state.dare === false
+  }"
+>
   <div class="imgContainer">
-    <img id="dare" src="../../../assets/dare.svg"> <img id="truth" src="../../../assets/truth.svg">
+    <img id="dare" src="../../../assets/dare.svg" />
+    <img id="truth" src="../../../assets/truth.svg" />
   </div>
   <p class="instructions">{{ state.currentInstructions }}</p>
   <div class="gameplay--buttons">

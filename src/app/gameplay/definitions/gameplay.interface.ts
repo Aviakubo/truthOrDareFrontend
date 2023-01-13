@@ -3,6 +3,6 @@ export interface Gameplay {
 };
 
 export interface GameplayState {
-    dare: boolean,
+    dare: boolean | null,
     currentInstructions: string
 };

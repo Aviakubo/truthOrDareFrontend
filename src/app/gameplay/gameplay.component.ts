@@ -72,6 +72,7 @@ export class GameplayComponent {
   }
 
   public showTruth() {
+    this.service.state.dare = false;
     if (this.truthArray.length > 0) {
       let randomTruthNumber = this.pickRandomUniqueTruth();
       this.service.state.currentInstructions =
@@ -84,6 +85,7 @@ export class GameplayComponent {
   }
 
   public showDare() {
+    this.service.state.dare = true;
     if (this.dareArray.length > 0) {
       let randomDareNumber = this.pickRandomUniqueDare();
       this.service.state.currentInstructions =

@@ -4,13 +4,24 @@
   height: 100%;
 }
 
-.imgContainer {
-    flex-direction: row;
-    width: 100%;
-    max-width: 326px;
-    justify-content: space-around;
+.truth {
+  background: linear-gradient(192.1deg, #e4a400 39.12%, #d7a700 102.59%);
+  background-blend-mode: multiply;
+  height: 100%;
 }
 
+.dare {
+  background: linear-gradient(192.1deg, #670000 39.12%, #ba0000 102.59%);
+  background-blend-mode: multiply;
+  height: 100%;
+}
+
+.imgContainer {
+  flex-direction: row;
+  width: 100%;
+  max-width: 326px;
+  justify-content: space-around;
+}
 
 .gameplay--buttons {
   width: 100%;
