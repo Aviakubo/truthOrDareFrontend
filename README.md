@@ -17,4 +17,4 @@
 3) Currently, lines 63 and 69 in the gameplay.component.ts file are responsible for the API calls. You need to point this to your backend.
 4) Run `npm run start` to run the app locally.
 
-### App is currently hosted [here](https://truth-or-dare-frontend-an4zezoyf-aviakubo.vercel.app/).
+### App is currently hosted [here](https://truth-or-dare-frontend-git-master-aviakubo.vercel.app/).
