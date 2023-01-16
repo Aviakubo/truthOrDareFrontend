@@ -3,8 +3,10 @@ import { GameplayState } from "./definitions/gameplay.interface";
 export class GameplayFactory {
     public static buildState(): GameplayState {
         return {
+            gameStarted: false,
             dare: null,
-            currentInstructions: ''
+            statement: 'Youngest Player Goes First',
+            category: 'classic'
         }
     }
 }

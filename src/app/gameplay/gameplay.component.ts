@@ -11,9 +11,11 @@ import { GameplayService } from './gameplay.service';
   styleUrls: ['./template/gameplay.component.scss'],
 })
 export class GameplayComponent {
+  category: string = this.service.state.category;
   startingIndex: number = 0;
   truthData: any;
   dareData: any;
+  gameLimit: number = 15;
   numberOfTruths: number = 4;
   numberOfDares: number = 5;
   truthArray: Array<number> = this.rangeOfTruths();
@@ -34,6 +36,7 @@ export class GameplayComponent {
   constructor(private service: GameplayService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
+    // console.log(this.gameData.);
     this.gameSetup();
     this.initSubscriptions();
   }
@@ -53,21 +56,23 @@ export class GameplayComponent {
   }
 
   private gameSetup() {
-    this.getDare();
-    this.getTruth();
-    this.rangeOfTruths();
-    this.rangeOfDares();
+    this.getTruths();
+    this.getDares();
+    // this.rangeOfTruths();
+    // this.rangeOfDares();
   }
 
-  private getTruth() {
-    this.http.get('https://truth-or-dare-backend.onrender.com/truth/').subscribe((response) => {
+  private getTruths() {
+    this.http.get(`https://truth-or-dare-backend.onrender.com/truthanddare/${this.category}/truth`).subscribe((response) => {
       this.truthData = response;
+      this.numberOfTruths = this.truthData.length;
     });
   }
 
-  private getDare() {
-    this.http.get('https://truth-or-dare-backend.onrender.com/dare').subscribe((response) => {
+  private getDares() {
+    this.http.get(`https://truth-or-dare-backend.onrender.com/${this.category}/dare`).subscribe((response) => {
       this.dareData = response;
+      this.numberOfDares = this.dareData.length;
     });
   }
 
@@ -75,8 +80,8 @@ export class GameplayComponent {
     this.service.state.dare = false;
     if (this.truthArray.length > 0) {
       let randomTruthNumber = this.pickRandomUniqueTruth();
-      this.service.state.currentInstructions =
-        this.truthData[randomTruthNumber].instructions;
+      this.service.state.statement =
+        this.truthData[randomTruthNumber].statement;
       const index = this.truthArray.indexOf(randomTruthNumber);
       this.truthArray.splice(index, 1);
     } else {
@@ -88,8 +93,8 @@ export class GameplayComponent {
     this.service.state.dare = true;
     if (this.dareArray.length > 0) {
       let randomDareNumber = this.pickRandomUniqueDare();
-      this.service.state.currentInstructions =
-        this.dareData[randomDareNumber].instructions;
+      this.service.state.statement =
+        this.dareData[randomDareNumber].statement;
       const index = this.dareArray.indexOf(randomDareNumber);
       this.dareArray.splice(index, 1);
     } else {
@@ -115,18 +120,18 @@ export class GameplayComponent {
     return dareArray;
   }
 
-  public pickRandomUniqueDare(): number {
-    const randomDareNumber =
-      this.dareArray[Math.floor(Math.random() * this.dareArray.length)];
-
-    return randomDareNumber;
-  }
-
   public pickRandomUniqueTruth(): number {
     const randomTruthNumber =
-      this.truthArray[Math.floor(Math.random() * this.truthArray.length)];
+      this.truthArray[Math.floor(Math.random() * this.truthData.length)];
 
     return randomTruthNumber;
+  }
+
+  public pickRandomUniqueDare(): number {
+    const randomDareNumber =
+      this.dareArray[Math.floor(Math.random() * this.dareData.length)];
+
+    return randomDareNumber;
   }
 
   private gameOver() {
@@ -138,8 +143,8 @@ export class GameplayComponent {
     } else if (this.dareArray.length === 0) {
       this.noDaresLeft();
     } else {
-      alert('i have not accountd for this error. game will restart now');
-      this.router.navigate(['']);
+      alert('i have not accounted for this error. game will restart now');
+      this.router.navigate(['/']);
     }
   }
 

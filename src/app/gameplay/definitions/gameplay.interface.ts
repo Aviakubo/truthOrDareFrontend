@@ -3,6 +3,8 @@ export interface Gameplay {
 };
 
 export interface GameplayState {
+    gameStarted: boolean,
     dare: boolean | null,
-    currentInstructions: string
+    statement: string,
+    category: string
 };
