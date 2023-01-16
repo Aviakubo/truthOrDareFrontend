@@ -33,7 +33,7 @@ export class GameplayComponent {
 
   constructor(private service: GameplayService, private http: HttpClient, private router: Router) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
     this.gameSetup();
     this.initSubscriptions();
   }
@@ -132,7 +132,7 @@ export class GameplayComponent {
   private gameOver() {
     if (this.truthArray.length === 0 && this.dareArray.length === 0) {
       alert('game is over');
-      this.router.navigate(['/playagain']);
+      this.router.navigate(['/']);
     } else if (this.truthArray.length === 0) {
       this.noTruthsLeft();
     } else if (this.dareArray.length === 0) {

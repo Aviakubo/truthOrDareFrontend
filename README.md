@@ -1,10 +1,9 @@
-# TruthOrDareFrontEnd
+# TruthOrDare
 
 ## Future Plans
-### Last updated 01/13/2023
+### Last updated 01/14/2023
 - Need to add capabilities for different "packs" or categories of truths & dares
 - Would like to add authentication so that users can have their own unique sets of packs
-- Might end up removing the player list component so that players can decide their own rules
 - Want to add scoring and provide a limit of how many truths and dares you can play in a game
 - Want to take the API call and manage it in state to reduce # of API calls but need to assess performance of app
 - Still need to build out the design. Have been too focused on functionality and gameplay logic.

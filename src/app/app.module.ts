@@ -6,14 +6,12 @@ import { MainEntryComponent } from './main-entry/main-entry.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { GameplayComponent } from './gameplay/gameplay.component';
-import { PackSelectionComponent } from './pack-selection/pack-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainEntryComponent,
-    GameplayComponent,
-    PackSelectionComponent
+    GameplayComponent
   ],
   imports: [
     BrowserModule,
