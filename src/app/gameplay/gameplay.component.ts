@@ -70,7 +70,7 @@ export class GameplayComponent {
   }
 
   private getDares() {
-    this.http.get(`https://truth-or-dare-backend.onrender.com/${this.category}/dare`).subscribe((response) => {
+    this.http.get(`https://truth-or-dare-backend.onrender.com/truthanddare/${this.category}/dare`).subscribe((response) => {
       this.dareData = response;
       this.numberOfDares = this.dareData.length;
     });
