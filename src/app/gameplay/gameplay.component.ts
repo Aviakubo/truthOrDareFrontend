@@ -54,14 +54,14 @@ export class GameplayComponent {
   }
 
   private getTruths() {
-    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/${this.state.category}`).subscribe((response) => {
+    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/randomtruth/${this.state.category}`).subscribe((response) => {
       this.state.currentTruths = response;
     });
     this.service.updateState(this.state);
   }
 
   private getDares() {
-    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/${this.state.category}`).subscribe((response) => {
+    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/randomdare/${this.state.category}`).subscribe((response) => {
       this.state.currentDares = response;
     });
     this.service.updateState(this.state);
