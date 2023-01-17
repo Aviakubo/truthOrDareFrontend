@@ -5,6 +5,10 @@ export interface Gameplay {
 export interface GameplayState {
     gameStarted: boolean,
     dare: boolean | null,
-    statement: string,
-    category: string
+    currentStatement: string,
+    category: string,
+    numberOfDares: number,
+    numberOfTruths: number,
+    currentDares: Array<string>,
+    currentTruths: Array<string>
 };

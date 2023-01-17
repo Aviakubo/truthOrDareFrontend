@@ -22,7 +22,7 @@
       }"
     id="truth" src="../../../assets/truth.svg" />
   </div>
-  <p class="instructions">{{ state.statement }}</p>
+  <p class="instructions">{{ state.currentStatement }}</p>
   <div id="gameplay--buttons" [ngClass]="state.gameStarted === true ? '' : 'buttonsGameStart'">
     <button id="truth" type="button" (click)="showTruth()">
       truth

@@ -1,7 +1,7 @@
 # TruthOrDare
 
 ## Future Plans
-### Last updated 01/14/2023
+### Last updated 01/17/2023
 - Need to add capabilities for different "packs" or categories of truths & dares
 - Would like to add authentication so that users can have their own unique sets of packs
 - Want to add scoring and provide a limit of how many truths and dares you can play in a game

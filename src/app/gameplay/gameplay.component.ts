@@ -11,15 +11,8 @@ import { GameplayService } from './gameplay.service';
   styleUrls: ['./template/gameplay.component.scss'],
 })
 export class GameplayComponent {
-  category: string = this.service.state.category;
-  startingIndex: number = 0;
-  truthData: any;
-  dareData: any;
-  gameLimit: number = 15;
-  numberOfTruths: number = 4;
-  numberOfDares: number = 5;
-  truthArray: Array<number> = this.rangeOfTruths();
-  dareArray: Array<number> = this.rangeOfDares();
+  truthArray: Array<number> = [];
+  dareArray: Array<number> = [];
   private subscriptions: Subscription = new Subscription();
 
   @Input() set state(value: GameplayState) {
@@ -58,102 +51,78 @@ export class GameplayComponent {
   private gameSetup() {
     this.getTruths();
     this.getDares();
-    // this.rangeOfTruths();
-    // this.rangeOfDares();
   }
 
   private getTruths() {
-    this.http.get(`https://truth-or-dare-backend.onrender.com/truthanddare/${this.category}/truth`).subscribe((response) => {
-      this.truthData = response;
-      this.numberOfTruths = this.truthData.length;
+    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/${this.state.category}`).subscribe((response) => {
+      this.state.currentTruths = response;
     });
+    this.service.updateState(this.state);
   }
 
   private getDares() {
-    this.http.get(`https://truth-or-dare-backend.onrender.com/truthanddare/${this.category}/dare`).subscribe((response) => {
-      this.dareData = response;
-      this.numberOfDares = this.dareData.length;
+    this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/${this.state.category}`).subscribe((response) => {
+      this.state.currentDares = response;
     });
+    this.service.updateState(this.state);
   }
 
   public showTruth() {
     this.service.state.dare = false;
+    this.rangeOfTruths();
+    this.pickRandomUniqueTruth();
     if (this.truthArray.length > 0) {
       let randomTruthNumber = this.pickRandomUniqueTruth();
-      this.service.state.statement =
-        this.truthData[randomTruthNumber].statement;
+      this.service.state.currentStatement =
+        this.state.currentTruths[randomTruthNumber];
       const index = this.truthArray.indexOf(randomTruthNumber);
       this.truthArray.splice(index, 1);
     } else {
-      this.gameOver();
+      this.getTruths();
     }
   }
 
   public showDare() {
     this.service.state.dare = true;
+    this.rangeOfDares();
+    this.pickRandomUniqueDare();
     if (this.dareArray.length > 0) {
       let randomDareNumber = this.pickRandomUniqueDare();
-      this.service.state.statement =
-        this.dareData[randomDareNumber].statement;
+      this.service.state.currentStatement =
+        this.state.currentDares[randomDareNumber];
       const index = this.dareArray.indexOf(randomDareNumber);
       this.dareArray.splice(index, 1);
     } else {
-      this.gameOver();
+      this.getDares();
     }
   }
 
   private rangeOfTruths(): Array<number> {
-    let truthArray: Array<number> = [];
-
-    for (let i = 0; i < this.numberOfTruths; i++) {
-      truthArray.push(i);
+    this.truthArray = [];
+    for (let i = 0; i < this.state.currentTruths.length; i++) {
+      this.truthArray.push(i);
     }
-    return truthArray;
+    return this.truthArray;
   }
 
   private rangeOfDares(): Array<number> {
-    let dareArray: Array<number> = [];
-
-    for (let i = 0; i < this.numberOfDares; i++) {
-      dareArray.push(i);
+    this.dareArray = [];
+    for (let i = 0; i < this.state.currentDares.length; i++) {
+      this.dareArray.push(i);
     }
-    return dareArray;
+    return this.dareArray;
   }
 
   public pickRandomUniqueTruth(): number {
-    const randomTruthNumber =
-      this.truthArray[Math.floor(Math.random() * this.truthData.length)];
 
+    const randomTruthNumber =
+      this.truthArray[Math.floor(Math.random() * this.state.currentTruths.length)];
     return randomTruthNumber;
   }
 
   public pickRandomUniqueDare(): number {
     const randomDareNumber =
-      this.dareArray[Math.floor(Math.random() * this.dareData.length)];
-
+      this.dareArray[Math.floor(Math.random() * this.state.currentDares.length)];
     return randomDareNumber;
   }
-
-  private gameOver() {
-    if (this.truthArray.length === 0 && this.dareArray.length === 0) {
-      alert('game is over');
-      this.router.navigate(['/']);
-    } else if (this.truthArray.length === 0) {
-      this.noTruthsLeft();
-    } else if (this.dareArray.length === 0) {
-      this.noDaresLeft();
-    } else {
-      alert('i have not accounted for this error. game will restart now');
-      this.router.navigate(['/']);
-    }
-  }
-
-  private noTruthsLeft() {
-    alert('there are no more truths left. please select a dare :)');
-  }
-
-  private noDaresLeft() {
-    alert('there are no more dares left. please select a truth :)');
-  }
-
 }
