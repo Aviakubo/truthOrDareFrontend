@@ -7,28 +7,36 @@
   }"
 >
   <div class="imgContainer">
-    <img 
-    [ngClass]="{
-    image: state.gameStarted === false,
-    show: state.dare === true,
-    hide: state.dare === false
-  }"
-    id="dare" src="../../../assets/dare.svg" />
-    <img 
-    [ngClass]="{
+    <img
+      [ngClass]="{
+        image: state.gameStarted === false,
+        show: state.dare === true,
+        hide: state.dare === false
+      }"
+      id="dare"
+      src="../../../assets/dare.svg"
+    />
+    <img
+      [ngClass]="{
         image: state.gameStarted === false,
         hide: state.dare === true,
         show: state.dare === false
       }"
-    id="truth" src="../../../assets/truth.svg" />
+      id="truth"
+      src="../../../assets/truth.svg"
+    />
   </div>
-  <p class="instructions">{{ state.currentStatement }}</p>
-  <div id="gameplay--buttons" [ngClass]="state.gameStarted === true ? '' : 'buttonsGameStart'">
-    <button id="truth" type="button" (click)="showTruth()">
-      truth
-    </button>
-    <button id="dare" type="button" (click)="showDare()">
-      dare
-    </button>
+  <div [ngSwitch]="state.loading">
+    <p *ngSwitchCase="false" class="instructions">
+      {{ state.currentStatement }}
+    </p>
+    <p class="instructions" *ngSwitchCase="true">Loading</p>
+  </div>
+  <div
+    id="gameplay--buttons"
+    [ngClass]="state.gameStarted === true ? '' : 'buttonsGameStart'"
+  >
+    <button [disabled]="state.loading" id="truth" type="button" (click)="showTruth()">truth</button>
+    <button [disabled]="state.loading" id="dare" type="button" (click)="showDare()">dare</button>
   </div>
 </div>

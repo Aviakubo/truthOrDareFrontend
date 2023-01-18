@@ -4,6 +4,7 @@ export interface Gameplay {
 
 export interface GameplayState {
     gameStarted: boolean,
+    loading: boolean,
     dare: boolean | null,
     currentStatement: string,
     category: string,

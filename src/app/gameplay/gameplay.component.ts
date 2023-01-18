@@ -29,7 +29,6 @@ export class GameplayComponent {
   constructor(private service: GameplayService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    // console.log(this.gameData.);
     this.gameSetup();
     this.initSubscriptions();
   }
@@ -63,6 +62,7 @@ export class GameplayComponent {
   private getDares() {
     this.http.get<Array<string>>(`https://truth-or-dare-backend.onrender.com/randomdare/${this.state.category}`).subscribe((response) => {
       this.state.currentDares = response;
+      this.state.loading = false;
     });
     this.service.updateState(this.state);
   }
