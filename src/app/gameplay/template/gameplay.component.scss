@@ -4,19 +4,19 @@
 .gameplay {
   background: linear-gradient(192.1deg, #027100 39.12%, #03433f 102.59%);
   background-blend-mode: multiply;
-  height: 100%;
+  height: 100vh;
 }
 
 .truth {
   background: linear-gradient(192.1deg, #e4a400 39.12%, #d7a700 102.59%);
   background-blend-mode: multiply;
-  height: 100%;
+  height: 100vh;
 }
 
 .dare {
   background: linear-gradient(192.1deg, #670000 39.12%, #ba0000 102.59%);
   background-blend-mode: multiply;
-  height: 100%;
+  height: 100vh;
 }
 
 .hide {
@@ -56,7 +56,7 @@ image {
 }
 
 .buttonsGameStart {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   margin-bottom: 36px;
   width: 100%;
